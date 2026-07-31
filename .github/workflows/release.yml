@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build Windows artifacts
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File release/packaging/build_windows.ps1
+
+      - name: Zip portable bundle
+        shell: pwsh
+        run: |
+          $v = (Get-Content release/packaging/VERSION -Raw).Trim()
+          Compress-Archive -Path "distributions/portable/NetDefenseOpsConsole" `
+            -DestinationPath "distributions/portable/NetDefenseOpsConsole-$v-portable.zip"
+
+      - name: Upload GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            distributions/installer/NetDefenseOpsConsole-Setup-*.exe
+            distributions/portable/NetDefenseOpsConsole-*-portable.zip
+          generate_release_notes: true

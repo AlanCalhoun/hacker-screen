@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging / install artifacts
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# PyInstaller cache
+/release/build/
+
+# Built distributions (commit README.txt only; attach .exe via GitHub Releases)
+/distributions/installer/*.exe
+/distributions/portable/NetDefenseOpsConsole/
+/distributions/portable/*.zip
+/distributions/pip/*.whl
+/distributions/pip/*.tar.gz
+
+# Local secrets
+.env
+*.local

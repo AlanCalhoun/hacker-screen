@@ -1,0 +1,10 @@
+# Auto detect text files and normalize line endings to LF in repo; CRLF on checkout for Windows scripts.
+* text=auto
+
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.iss text eol=crlf
+
+*.png binary
+*.ico binary
+*.mp4 binary
