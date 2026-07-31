@@ -4,8 +4,8 @@
 
 from pathlib import Path
 
-PACKAGING = Path(SPECPATH).resolve().parent
-RELEASE = PACKAGING.parent
+SPEC_DIR = Path(SPECPATH).resolve()
+RELEASE = SPEC_DIR.parent
 REPO_ROOT = RELEASE.parent
 APP_ROOT = REPO_ROOT / "app"
 ASSETS = APP_ROOT / "assets"
@@ -52,8 +52,8 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version=str(PACKAGING / "version_info.txt"),
-    icon=str(PACKAGING / "app_icon.ico"),
+    version=str(SPEC_DIR / "version_info.txt"),
+    icon=str(SPEC_DIR / "app_icon.ico"),
     uac_admin=False,
 )
 

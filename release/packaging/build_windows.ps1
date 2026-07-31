@@ -70,4 +70,3 @@ Write-Host ""
 Write-Host "  INSTALLER:  distributions\installer\NetDefenseOpsConsole-Setup-$Version.exe"
 Write-Host "  PORTABLE:   zip distributions\portable\NetDefenseOpsConsole\"
 Write-Host "  GUIDE:      distributions\README.txt"
-
